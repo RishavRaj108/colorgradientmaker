@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+         padding:0;
+         margin:0;
+         box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-image: linear-gradient(to right , rgb(92, 145 , 299), rgb(152, 63, 198));
+           
+           
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar{
+            /* display: block; */
+            background-color: aliceblue;
+            padding:1rem;
+            margin-bottom:2rem;
+            & h1{
+                text-align: center;
+                
+                
+            }
+        }
+        .btnAlign{
+           display: flex;
+           
+            justify-content: center;
+            align-items: center;
+            & .btn{ 
+            padding:0.5rem 0.8rem;
+            margin-top: 2rem;
+            margin-bottom:2rem;
+            margin-right:2rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight:bold;
+           
+           background-image: linear-gradient(to right ,#46E206, #1AC1D4 );
+           
+           box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            transition: all 0.2s linear;
+            &:hover{
+              background-color: transparent;
+              color:cornsilk;
+              box-shadow: inset;
+            }
+
+        }
+        }
+        
+        h2{
+            font-size: 1.5rem;
+            align-content: center;
+            text-align: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .copyCode{
+            margin:1rem;
+            padding:3rem 2rem;
+            border:0.1rem solid black;
+            border-left: 0.2rem solid rgb(210, 210, 210);
+            color:rgb(0, 0, 0);
+            font-size:1rem;
+            font-weight:600;
+            background-color: rgba(210, 210, 210,0.5);
+            border-radius: 1.5rem;
+            font-family:  Times, serif;
+            /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <h1>˚₊· ͟͟͞͞➳❥    Generate a CSS Color Gradient</h1>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="btnAlign">
+            <button id="myButton" class="btn">#051937</button>
+            <button id="myButton2" class="btn">#008793</button>
+        </div>
+        <h2>Copy Your Code Here<br> "Click Here 👇" </h2>
+        <div class="copyCode">
+            background-image: linear-gradient(to right , rgb(92, 145 , 299), rgb(152, 63, 198));
+        </div>
+    </section>
+    <script>
+        let btn1 = document.getElementById("myButton");
+        let btn2 = document.getElementById("myButton2");
+        let copyDiv = document.querySelector(".copyCode");
+        let rgb1 = "rgb(92, 145 , 299)";
+        let rgb2 = "rgb(152, 63, 198)";
+        const hexValues = () => {
+            let myHexValues = "01234565789ABCDEF";
+            let colors = "#";
+            for(i=0 ; i<=5 ; i++){
+              
+              colors = colors + myHexValues[Math.floor(Math.random() * 16)];
+            }
+           return colors;
+        }
+          
+        const handleButton1 = () => {
+           rgb1 = hexValues();
+        //    console.log(rgb1);
+           btn1.innerText=rgb1;
+           document.body.style.backgroundImage= `linear-gradient(to right ,${rgb1},${rgb2} `;
+           copyDiv.innerHTML=`background-image: linear-gradient(to right ,${rgb1}, ${rgb2} );`;
+        }
+        const handleButton2 = () => {
+            rgb2 = hexValues();
+            // console.log(rgb2);
+            btn2.innerText=rgb2;
+             document.body.style.backgroundImage= `linear-gradient(to right , ${rgb1},${rgb2} `;
+             copyDiv.innerHTML=`background-image: linear-gradient(to right ,${rgb1},${rgb2});`;
+            
+        }
+     
+
+        btn1.addEventListener("click" , handleButton1);
+        btn2.addEventListener("click" , handleButton2);
+
+        copyDiv.addEventListener("click" , () =>{
+            navigator.clipboard.writeText(copyDiv.innerText);
+            alert("LinearGradient Code Copied");
+        });
+        
+    </script>
+    
+</body>
+</html>
